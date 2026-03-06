@@ -1,17 +1,13 @@
-FROM node:20
+FROM node:18
 
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-# install yt-dlp + ffmpeg
 RUN apt-get update && \
 apt-get install -y ffmpeg python3 python3-pip && \
 pip3 install yt-dlp
 
+WORKDIR /app
+
 COPY . .
 
-EXPOSE 3000
+RUN npm install
 
-CMD ["node", "server.js"]
+CMD ["npm","start"]
