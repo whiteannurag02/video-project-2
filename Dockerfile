@@ -1,16 +1,24 @@
-FROM node:18
+FROM node:20-slim
 
+# install dependencies
 RUN apt-get update && \
-apt-get install -y ffmpeg python3 yt-dlp && \
-rm -rf /var/lib/apt/lists/*
+apt-get install -y ffmpeg yt-dlp && \
+apt-get clean
 
+# set working directory
 WORKDIR /app
 
+# copy package files
 COPY package*.json ./
+
+# install node modules
 RUN npm install
 
+# copy project files
 COPY . .
 
-EXPOSE 5000
+# railway port
+EXPOSE 3000
 
-CMD ["node","server.js"]
+# start server
+CMD ["node", "index.js"]
