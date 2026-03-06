@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Annurag Vartak - YouTube Downloader</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #000000, #8B0000);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(0,0,0,0.7);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 25px red;
+            width: 400px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+            color: #ff4d4d;
+        }
+
+        h3 {
+            margin-top: 0;
+            font-weight: normal;
+            color: #ccc;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: red;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Annurag Vartak</h1>
+    <h3>YouTube Video Downloader</h3>
+
+    <input type="text" id="url" placeholder="Enter YouTube URL" />
+
+    <select id="quality">
+        <option value="best">Best Quality</option>
+        <option value="1080">1080p</option>
+        <option value="720">720p</option>
+        <option value="480">480p</option>
+    </select>
+
+    <button onclick="downloadVideo()">Download</button>
+</div>
+
+<script>
+function downloadVideo() {
+    const url = document.getElementById("url").value;
+    const quality = document.getElementById("quality").value;
+
+    if (!url) {
+        alert("Please enter a YouTube URL");
+        return;
+    }
+
+    window.location.href = `/download?url=${encodeURIComponent(url)}&quality=${quality}`;
+}
+</script>
+
+</body>
+</html>
